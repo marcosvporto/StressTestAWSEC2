@@ -25,7 +25,7 @@ router.post("/", function(req,res){
         console.log(`stdout: ${stdout}`)
         console.log(`stderr: ${stderr}`)
     }) */
-    exec('wget -q -O - http://169.254.169.254/meta-data/instance-id >> stresslog.txt', (error, stdout, stderr) => {
+    exec('curl http://169.254.169.254/latest/meta-data/instance-id >> stresslog.txt', (error, stdout, stderr) => {
         if (error) {
             console.error(`exec error: ${error}`)
             return
